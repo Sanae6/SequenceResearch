@@ -6,8 +6,10 @@
 
 typedef void (*balls)();
 
+
+
 al::Sequence* amonglaPatch(const char* name) {
-    return new HakoniwaSequence(name);
+    // return new HakoniwaSequence(name);
     //gLogger->LOG("we do a little patching\n");
     // return new AmonglaSequence(AmonglaSequence::name);
     // balls ball = nullptr;

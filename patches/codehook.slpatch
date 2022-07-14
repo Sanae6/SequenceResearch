@@ -49,7 +49,4 @@ B59E28: // sead::system::print
 //    MOV X0, #0
 //    RET
 
-
-//536350: ADRP x1, amonglaSequenceName & -4096
-//536350: MOV x1, amonglaSequenceName
-513ec4: BL amonglaPatch
+536544: BL amonglaPatch
