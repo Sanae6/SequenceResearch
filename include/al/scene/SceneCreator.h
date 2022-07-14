@@ -7,7 +7,8 @@ namespace al
     class IUseSceneCreator
     {
     public:
+        virtual ~IUseSceneCreator();
         virtual al::SceneCreator* getSceneCreator() const = 0;
-        virtual al::SceneCreator* setSceneCreator() const = 0;
+        virtual void setSceneCreator(al::SceneCreator*) = 0;
     };
 };

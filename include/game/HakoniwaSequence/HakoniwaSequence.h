@@ -73,6 +73,7 @@ class HakoniwaSequence : public al::Sequence {
 
         // al::initSceneCreator(al::IUseSceneCreator *,al::SequenceInitInfo const&,al::GameDataHolderBase *,al::AudioDirector *,al::ScreenCaptureExecutor *,alSceneFunction::SceneFactory *)	.text	00000000009F2270	0000007C	00000050	FFFFFFFFFFFFFFF8	R	.	.	.	B	.	.
 
+        undefined padding[0x418 - 400];
 
         // undefined * * field_0x0;
         // undefined padding_120[0x120];

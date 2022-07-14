@@ -44,6 +44,7 @@ void Logger::init()
     this->socket_log_state = SOCKET_LOG_CONNECTED;
 
     this->isDisableName = false;
+    this->LOG("AMONGLA SWAG\n");
 }
 
 void Logger::LOG(const char *fmt, ...)

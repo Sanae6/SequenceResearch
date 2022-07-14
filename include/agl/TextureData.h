@@ -7,7 +7,7 @@
 
 #include "detail/Surface.h"
 #include "driver/NVNtexture.h"
-#include "sead/string.h"
+#include <prim/seadSafeString.h>
 
 namespace agl
 {
@@ -44,7 +44,7 @@ namespace agl
         bool hasStencil() const;
         void invalidateCPUCache();
         void flushCPUCache() const;
-        void setDebugLabel(sead::SafeStringBase<char> const &);
+        void setDebugLabel(sead::SafeString const &);
         void getDebugLabel() const;
 
         u64 _0;

@@ -1,13 +1,20 @@
 #pragma once
 
 #include "GameFrameWorkNx.h"
+#include "game/System/GameDrawInfo.h"
+#include <heap/seadDisposer.h>
+
+namespace al {
+    class AccountHolder;
+    class SystemKit;
+}
 
 class Application {
-    public:
-        static const Application *sInstance;
+    SEAD_SINGLETON_DISPOSER(Application)
+    Application();
 
-        unsigned char padding_28[0x28];
-        al::GameFrameworkNx *mFramework; // 0x28
+public:
+    al::GameDrawInfo* mGameDrawInfo;
+    al::AccountHolder* mAccountHolder;
+    al::GameFrameworkNx* mFramework;  // 0x28
 };
-
-// const Application *Application::sInstance;
