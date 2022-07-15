@@ -1,29 +1,24 @@
+#include <math/seadVector.h>
+#include <gfx/seadCamera.h>
+#include <gfx/seadPrimitiveRenderer.h>
+#include <gfx/seadOrthoProjection.h>
+#include <gfx/seadViewport.h>
+#include "al/util/ControllerUtil.h"
 #include "sequences/AmonglaSequence.hpp"
+#include "sequences/AmonglaHeaderDump.hpp"
 #include "game/HakoniwaSequence/HakoniwaSequence.h"
 #include "game/System/Application.h"
-#include "gfx/seadViewport.h"
 #include "logger.hpp"
 
-typedef void (*balls)();
-
-
+struct SequenceFactory {
+    static al::Sequence* createSequence(const char* name);
+};
 
 al::Sequence* amonglaPatch(const char* name) {
-    // return new HakoniwaSequence(name);
-    //gLogger->LOG("we do a little patching\n");
-    // return new AmonglaSequence(AmonglaSequence::name);
-    // balls ball = nullptr;
-    // ball();
-    // return nullptr;
+    return new AmonglaSequence(AmonglaSequence::name());
 }
 
 AmonglaSequence::AmonglaSequence(const char* name) : al::Sequence(name) {
-    gLogger->LOG("CONSTRUCTOR\n");
-    gLogger->LOG("CONSTRUCTOR\n");
-    gLogger->LOG("CONSTRUCTOR\n");
-    gLogger->LOG("CONSTRUCTOR\n");
-    gLogger->LOG("CONSTRUCTOR\n");
-    gLogger->LOG("CONSTRUCTOR\n");
     gLogger->LOG("CONSTRUCTOR\n");
 }
 
@@ -32,7 +27,18 @@ void AmonglaSequence::init(const al::SequenceInitInfo &initInfo) {
     AmonglaSequence::initDrawSystemInfo(initInfo);
 }
 
-void AmonglaSequence::drawMain() {
+void AmonglaSequence::drawMain() const {
     al::Sequence::drawMain();
-    gLogger->LOG("BALLS\n");
+    gLogger->LOG("DRAW MAIN!!!!\n");
+    // if (al::isPadHoldA(-1)) {
+    //     auto* renderer = sead::PrimitiveRenderer::instance();
+    //     renderer->setDrawContext(getDrawInfo()->mDrawContext);
+    //     sead::LookAtCamera camera(sead::Vector3f::zero, sead::Vector3f::ez, sead::Vector3f::ey);
+    //     sead::OrthoProjection proj;
+    //     renderer->setProjection(proj);
+    //     renderer->setCamera(camera);
+    //     renderer->begin();
+    //     renderer->setModelMatrix(sead::Matrix34f::ident);
+    //     renderer->end();
+    // }
 }

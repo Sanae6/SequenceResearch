@@ -21,8 +21,8 @@ public:
     virtual void init(const al::SequenceInitInfo& initInfo);
     virtual void update();
     virtual void kill();
-    virtual void drawMain();
-    virtual void drawSub();
+    virtual void drawMain() const;
+    virtual void drawSub() const;
     virtual bool isDisposable() { return false; }
     virtual al::Scene* getCurrentScene() const;
     virtual al::SceneCreator* getSceneCreator() const override;
@@ -34,6 +34,11 @@ public:
     void initDrawSystemInfo(const al::SequenceInitInfo&);
     al::AudioSystemInfo* getAudioSystemInfo();
 
+protected:
+    al::GameDrawInfo* getDrawInfo() const {
+        return mGameDrawInfo;
+    }
+
 private:
     sead::FixedSafeString<0x40> mName;
     al::Scene* mNextScene;
@@ -41,7 +46,7 @@ private:
     al::SceneCreator* mSceneCreator;
     al::AudioDirector* mAudioDirector;
     al::AudioKeeper* mAuidoKeeper;
-    al::GameDrawInfo* mDrawContext;
+    al::GameDrawInfo* mGameDrawInfo;
     bool mIsAlive;
 };
 }  // namespace al
