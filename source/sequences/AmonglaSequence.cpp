@@ -3,16 +3,25 @@
 #include <gfx/seadPrimitiveRenderer.h>
 #include <gfx/seadOrthoProjection.h>
 #include <gfx/seadViewport.h>
+#include <new>
+#include "al/util.hpp"
 #include "al/util/ControllerUtil.h"
+#include "basis/seadNew.h"
+#include "heap/seadHeapMgr.h"
+#include "nvn/nvn_api.h"
+#include "nvn/nvn_types.h"
 #include "sequences/AmonglaSequence.hpp"
 #include "sequences/AmonglaHeaderDump.hpp"
 #include "game/HakoniwaSequence/HakoniwaSequence.h"
 #include "game/System/Application.h"
 #include "logger.hpp"
+#include "sequences/TrueScene.hpp"
 
 struct SequenceFactory {
     static al::Sequence* createSequence(const char* name);
 };
+
+void drawBackground(agl::DrawContext *context);
 
 al::Sequence* amonglaPatch(const char* name) {
     return new AmonglaSequence(AmonglaSequence::name());
@@ -29,16 +38,7 @@ void AmonglaSequence::init(const al::SequenceInitInfo &initInfo) {
 
 void AmonglaSequence::drawMain() const {
     al::Sequence::drawMain();
-    gLogger->LOG("DRAW MAIN!!!!\n");
-    // if (al::isPadHoldA(-1)) {
-    //     auto* renderer = sead::PrimitiveRenderer::instance();
-    //     renderer->setDrawContext(getDrawInfo()->mDrawContext);
-    //     sead::LookAtCamera camera(sead::Vector3f::zero, sead::Vector3f::ez, sead::Vector3f::ey);
-    //     sead::OrthoProjection proj;
-    //     renderer->setProjection(proj);
-    //     renderer->setCamera(camera);
-    //     renderer->begin();
-    //     renderer->setModelMatrix(sead::Matrix34f::ident);
-    //     renderer->end();
-    // }
+    gLogger->LOG("AMONGLES\n");
+
+    drawBackground(getDrawInfo()->mDrawContext);
 }

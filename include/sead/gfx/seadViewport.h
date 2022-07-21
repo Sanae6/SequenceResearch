@@ -23,6 +23,8 @@ namespace sead
         // void project(sead::Vector2<f32> *, sead::Vector3<f32> const &) const;
 
         void apply(sead::DrawContext *, sead::LogicalFrameBuffer const &) const;
+        void applyScissor(sead::DrawContext *, sead::LogicalFrameBuffer const &) const;
+        void applyViewport(sead::DrawContext *, sead::LogicalFrameBuffer const &) const;
 
         f32 _8;
         f32 Viewport_xC;

@@ -4,6 +4,7 @@
 #include "al/camera/CameraDirector.h"
 #include "al/camera/CameraPoser.h"
 #include "al/util.hpp"
+#include "al/util/ControllerUtil.h"
 #include "al/util/LiveActorUtil.h"
 #include "al/util/StringUtil.h"
 #include "cameras/CameraPoserCustom.h"
@@ -40,13 +41,13 @@ void drawBackground(agl::DrawContext *context)
     p4.z = 0.0;
 
     sead::Color4f c;
-    c.r = 0.1;
-    c.g = 0.1;
+    c.r = al::isPadHoldA(-1) ? 0.1 : 1.0;
+    c.g = al::isPadHoldA(-1) ? 0.6 : 0.1;
     c.b = 0.1;
-    c.a = 0.9;
+    c.a = 1.0;
 
     agl::utl::DevTools::beginDrawImm(context, sead::Matrix34<float>::ident, sead::Matrix44<float>::ident);
-    agl::utl::DevTools::drawTriangleImm(context, p1, p2, p3, c);
+    agl::utl::DevTools::drawTriangleImm(context, p3, p2, p1, c);
     agl::utl::DevTools::drawTriangleImm(context, p3, p4, p2, c);
 }
 

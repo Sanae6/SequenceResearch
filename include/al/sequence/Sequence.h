@@ -39,6 +39,8 @@ protected:
         return mGameDrawInfo;
     }
 
+    void setNextScene(al::Scene* scene);
+
 private:
     sead::FixedSafeString<0x40> mName;
     al::Scene* mNextScene;

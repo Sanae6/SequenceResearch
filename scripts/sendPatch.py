@@ -25,6 +25,7 @@ def listdirs(connection,_path):
 
 
 def ensuredirectory(connection,root,path):
+    return
     print(f"Ensuring {os.path.join(root, path)} exists...")
     if path not in listdirs(connection, root):
         connection.mkd(f'{root}/{path}')
