@@ -4,9 +4,9 @@
 namespace al {
     class ISceneObj {
         public:
-            virtual const char* getSceneObjName(void) = 0;
+            virtual char* getSceneObjName(void) const = 0;
             virtual ~ISceneObj();
-            virtual void initAfterPlacementSceneObj(struct ActorInitInfo const&) = 0;
-            virtual void initSceneObj(void) = 0;
+            virtual void initAfterPlacementSceneObj(struct ActorInitInfo const&) {}
+            virtual void initSceneObj(void) {}
     };
 }

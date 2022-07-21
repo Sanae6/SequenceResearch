@@ -13,13 +13,13 @@
 class GameDataHolder : public al::GameDataHolderBase
 {
 public:
-    // GameDataHolder(al::MessageSystem const *);
+    GameDataHolder(al::MessageSystem const *);
     GameDataHolder();
 
     virtual ~GameDataHolder();
 
-    virtual char* getSceneObjName() const;
-    // virtual al::MessageSystem* getMessageSystem() const;
+    char* getSceneObjName() const override;
+    virtual al::MessageSystem* getMessageSystem() const override;
 
     void setPlayingFileId(s32 file);
     void intitalizeData();

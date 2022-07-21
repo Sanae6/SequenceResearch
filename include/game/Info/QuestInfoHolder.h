@@ -21,7 +21,7 @@ public:
     //     mQuestArr = &infoHolder;
     // };
 
-    virtual const char *getSceneObjName(void) override;
+    virtual char *getSceneObjName(void) const override;
     virtual void initAfterPlacementSceneObj(al::ActorInitInfo const&) override;
     
     void validateQuest(QuestInfo const*);

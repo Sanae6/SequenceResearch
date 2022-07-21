@@ -2,7 +2,9 @@
 
 namespace al
 {
-    class SceneCreator;
+    class SceneCreator {
+
+    };
 
     class IUseSceneCreator
     {

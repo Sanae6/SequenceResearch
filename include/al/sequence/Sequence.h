@@ -39,10 +39,12 @@ protected:
         return mGameDrawInfo;
     }
 
-    void setNextScene(al::Scene* scene);
+    void setNextScene(al::Scene* scene) {
+        mNextScene = scene;
+    }
 
 private:
-    sead::FixedSafeString<0x40> mName;
+    const sead::FixedSafeString<0x40> mName;
     al::Scene* mNextScene;
     al::Scene* mCurrentScene;
     al::SceneCreator* mSceneCreator;
