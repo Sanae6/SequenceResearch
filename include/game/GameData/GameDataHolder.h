@@ -18,7 +18,7 @@ public:
 
     virtual ~GameDataHolder();
 
-    char* getSceneObjName() const override;
+    const char* getSceneObjName() const override;
     virtual al::MessageSystem* getMessageSystem() const override;
 
     void setPlayingFileId(s32 file);

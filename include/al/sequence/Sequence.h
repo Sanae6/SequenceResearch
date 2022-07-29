@@ -24,9 +24,9 @@ public:
     virtual void drawMain() const;
     virtual void drawSub() const;
     virtual bool isDisposable() { return false; }
-    virtual al::Scene* getCurrentScene() const;
-    virtual al::SceneCreator* getSceneCreator() const override;
-    virtual void setSceneCreator(al::SceneCreator* sceneCreator) override;
+    al::Scene* getCurrentScene() const;
+    al::SceneCreator* getSceneCreator() const override;
+    void setSceneCreator(al::SceneCreator* sceneCreator) override;
 
     al::AudioKeeper* getAudioKeeper() const override;
     void initAudio(const al::GameSystemInfo&, const char*, int, int, int, const char*);
@@ -34,13 +34,20 @@ public:
     void initDrawSystemInfo(const al::SequenceInitInfo&);
     al::AudioSystemInfo* getAudioSystemInfo();
 
-protected:
     al::GameDrawInfo* getDrawInfo() const {
         return mGameDrawInfo;
     }
 
+    al::AudioDirector* getAudioDirector() const {
+        return mAudioDirector;
+    }
+
     void setNextScene(al::Scene* scene) {
         mNextScene = scene;
+    }
+
+    const sead::SafeString& getName() const {
+        return mName;
     }
 
 private:
@@ -49,7 +56,7 @@ private:
     al::Scene* mCurrentScene;
     al::SceneCreator* mSceneCreator;
     al::AudioDirector* mAudioDirector;
-    al::AudioKeeper* mAuidoKeeper;
+    al::AudioKeeper* mAudioKeeper;
     al::GameDrawInfo* mGameDrawInfo;
     bool mIsAlive;
 };

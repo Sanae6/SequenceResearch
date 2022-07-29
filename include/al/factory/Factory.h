@@ -28,9 +28,9 @@ namespace al
         {
             for (size_t i = 0; i < this->factoryCount; i++)
             {
-                if (al::isEqualString(this->actorTable[i].actorName, name))
+                if (al::isEqualString(this->creatorTable[i].actorName, name))
                 {
-                    return this->actorTable[i].createActorFunction;
+                    return this->creatorTable[i].createActorFunction;
                 }
             }
             return nullptr;
@@ -39,7 +39,7 @@ namespace al
     protected:
         // 0x0 is vtable
         const char *factoryName;         // 0x8
-        al::NameToCreator<T> *actorTable; // 0x10
+        al::NameToCreator<T> *creatorTable; // 0x10
         int factoryCount;                // 0x18
     };
 

@@ -63,5 +63,5 @@ sead::Vector3f QuatToEuler(sead::Quatf *quat) {
 }
 
 void logVector(const char *vectorName, sead::Vector3f vector) {
-    gLogger->LOG("%s: X: %f\nY: %f\nZ: %f\n", vectorName, vector.x, vector.y, vector.z);
+    Logger::log("%s: X: %f\nY: %f\nZ: %f\n", vectorName, vector.x, vector.y, vector.z);
 }

@@ -35,6 +35,7 @@ namespace al {
             al::AudioSystem *mAudioSys;                    // 0x28 
             al::GamePadSystem *mGamePadSys;                // 0x30 
             al::GameDrawInfo *mDrawInfo;                   // 0x38 from Application::sInstance + 0x30
+            
             ProjectNfpDirector *mProjNfpDirector;          // 0x48 
             al::HtmlViewer *mHtmlViewer;                   // 0x50 
             ApplicationMessageReceiver *mMessageReciever;  // 0x58 

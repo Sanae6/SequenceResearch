@@ -37,11 +37,11 @@ typedef unsigned int    undefined3;
 typedef unsigned int    undefined4;
 typedef unsigned long    undefined8;
 
-enum SocketLogState
-{
-    SOCKET_LOG_UNINITIALIZED    = 0,
-    SOCKET_LOG_CONNECTED        = 1,
-    SOCKET_LOG_UNAVAILABLE      = 2
+enum SocketLogState {
+    SOCKET_LOG_UNINITIALIZED = 0,
+    SOCKET_LOG_CONNECTED = 1,
+    SOCKET_LOG_UNAVAILABLE = 2,
+    SOCKET_LOG_DISCONNECTED = 3
 };
 
 //typedef signed int          ssize_t;

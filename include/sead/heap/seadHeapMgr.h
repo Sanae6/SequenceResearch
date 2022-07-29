@@ -26,6 +26,8 @@ public:
     static HeapMgr* instance() { return sInstancePtr; }
     static s32 getRootHeapNum(); // { return sRootHeaps.size(); }
 
+    static void dumpTreeYAML(sead::WriteStream&);
+
     Heap *findHeapByName(sead::SafeStringBase<char> const&,int) const;
     Heap* findHeapByName_(sead::Heap*, sead::SafeStringBase<char> const&, int*);
 

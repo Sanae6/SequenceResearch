@@ -34,7 +34,7 @@ namespace agl
             u8 _8;
             u8 _9;
             u16 _A;
-            u8 _C[0x1A-0xC];
+            u8 _CAmong[0x1A-0xC];
             u8 _1A;
             u8 _1B;
             u32 _1C;

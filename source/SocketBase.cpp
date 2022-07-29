@@ -1,12 +1,11 @@
 #include "SocketBase.hpp"
+#include <cstring>
+#include "nn/result.h"
+#include "types.h"
 
-SocketBase::SocketBase(const char *ip, u16 port, const char *name)
+SocketBase::SocketBase(const char *name)
 {
-    this->sock_ip = ip;
-
-    this->port = port;
-
-    this->sockName = name;
+    strcpy(this->sockName, name);
 
     this->sock_flags = 0;
 }
@@ -17,16 +16,14 @@ const char *SocketBase::getStateChar() {
     {
     case SOCKET_LOG_CONNECTED:
         return "Socket Connected";
-        break;
     case SOCKET_LOG_UNAVAILABLE:
         return "Socket Unavailable";
-        break;
     case SOCKET_LOG_UNINITIALIZED:
         return "Socket Unitialized";
-        break;
-    
+    case SOCKET_LOG_DISCONNECTED:
+        return "Socket Disconnected";
     default:
-        break;
+        return "Unknown State";
     }
 }
 
@@ -46,6 +43,14 @@ s32 SocketBase::socket_log(const char* str)
     return nn::socket::Send(this->socket_log_socket, str, strlen(str), 0);
 }
 
+s32 SocketBase::socket_log_buffer(const void* data, u32 length)
+{
+    if (this->socket_log_state != SOCKET_LOG_CONNECTED)
+        return -1;
+
+    return nn::socket::Send(this->socket_log_socket, data, length, 0);
+}
+
 s32 SocketBase::socket_read_char(char *out) {
 
     if (this->socket_log_state != SOCKET_LOG_CONNECTED)
@@ -63,17 +68,22 @@ s32 SocketBase::socket_read_char(char *out) {
 }
 
 s32 SocketBase::getSocket() {
-    if(this->socket_log_state != SOCKET_LOG_UNINITIALIZED || this->socket_log_state != SOCKET_LOG_UNAVAILABLE) {
+    if(this->socket_log_state == SOCKET_LOG_CONNECTED) {
         return this->socket_log_socket;
     }else {
         return -1;
     }
 }
 
-void SocketBase::closeSocket() {
-    nn::socket::Close(this->socket_log_socket);
-    this->socket_log_state = SOCKET_LOG_UNINITIALIZED;
-}
+bool SocketBase::closeSocket() {
 
+    nn::Result result = nn::socket::Close(this->socket_log_socket);
+
+    if (result.isSuccess()) {
+        this->socket_log_state = SOCKET_LOG_DISCONNECTED;
+    }
+
+    return result.isSuccess();
+}
 
 

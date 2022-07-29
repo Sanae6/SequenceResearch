@@ -1,8 +1,7 @@
 [version=100, target=main]
 //StageScene::control+18:
 //    BL stageSceneHook
-//4C8648: // hook to the init of a stage to modify certain conditions (we also have access to SceneInitInfo)
-//    BL stageInitHook
+4C8DD0 BL stageInitHook // hook to the init of a stage to modify certain conditions (we also have access to SceneInitInfo)
 //
 // hooks to start logger
 5359D8: // GameSystem::init 
@@ -12,8 +11,8 @@ B59E28: // sead::system::print
 //5359DC:
 //    MOV X0, X19 // move GameSystem to arg register
 //    BL setupDebugMenu
-//    
-//50F258: // HakoniwaSequence::drawMain+84
+//
+//50F274: // HakoniwaSequence::drawMain
 //    MOV X0, X19 // HakoniwaSequence
 //    MOV X1, SP // viewport
 //    MOV X2, X20 // drawContext
@@ -25,8 +24,8 @@ B59E28: // sead::system::print
 //4C8958:
 //    BL initDebugListHook
 //
-1B3F0C: // disables call to open HTML viewer during first time odyssey flight
-    NOP
+//1B3F0C: // disables call to open HTML viewer during first time odyssey flight
+//    NOP
 //
 //1F2A2C: // patches checkpoint system to always allow warping
 //    MOV W0, #1
@@ -49,4 +48,23 @@ B59E28: // sead::system::print
 //    MOV X0, #0
 //    RET
 //
-536544 BL amonglaPatch
+
+
+
+// AmonglaSequence
+
+//536544:
+//    BL amonglaPatch
+//536730:
+//    BL isEqualStringFalse
+//536580:
+//    BL isEqualStringFalse
+
+// Skip to StageScene
+
+50ef28:
+    BL speedboot::hakoniwaSetNerveSetup
+50eb88:
+    ORR w2, wzr, #0x1f // nerve state count
+50eb64:
+    BL speedboot::prepareLayoutInitInfo

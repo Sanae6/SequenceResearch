@@ -26,7 +26,7 @@ namespace al
         ActorFactory(const char *fName)
         {
             this->factoryName = fName;
-            this->actorTable = nullptr;
+            this->creatorTable = nullptr;
             this->factoryCount = 0;
         };
     };

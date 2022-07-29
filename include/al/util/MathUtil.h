@@ -32,6 +32,8 @@ bool isNearZero(float, float);
 
 bool isNearZero(sead::Vector3f const &, float);
 
+bool isNearZeroOrLess(float, float);
+
 template <typename T>
 inline T clamp(T value, T min, T max) {
     if (value < min)

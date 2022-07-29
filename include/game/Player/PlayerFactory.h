@@ -19,7 +19,7 @@ class PlayerFactory : public al::Factory<CreateHakoniwa> {
     public:
         PlayerFactory() {
             this->factoryName = "プレイヤー生成";
-            this->actorTable = playerEntries;
+            this->creatorTable = playerEntries;
             this->factoryCount = sizeof(playerEntries)/sizeof(playerEntries[0]);
         };
 };

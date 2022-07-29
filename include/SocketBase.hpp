@@ -4,15 +4,14 @@
 #include <cstring>
 #include "types.h"
 #include "nn.h"
-#include "sead/basis/seadNew.hpp"
+#include "sead/basis/seadNew.h"
 
-class SocketBase
-{
+class SocketBase {
 
-public:
-        SocketBase(const char *ip, u16 port, const char *name);
+    public:
+        SocketBase(const char *name);
 
-        virtual void init() = 0;
+        virtual nn::Result init(const char * ip, u16 port) = 0;
 
         const char *getStateChar();
         u8 getLogState();
@@ -20,18 +19,25 @@ public:
 
         void set_sock_flags(int flags);
 
-        void closeSocket();
+        bool closeSocket();
 
-protected:
-        s32 socket_log(const char *str);
+        void setName(const char *name) {strcpy(sockName, name);};
+        u32 socket_errno;
+
+    protected:
+        s32 socket_log(const char* str);
+        s32 socket_log_buffer(const void* data, u32 size);
         s32 socket_read_char(char *out);
 
-        const char *sockName;
+        char sockName[0x10] = {};
         const char *sock_ip;
 
         u16 port;
         u8 socket_log_state;
         s32 socket_log_socket;
-
+        
         int sock_flags;
 };
+
+
+
