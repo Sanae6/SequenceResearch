@@ -87,7 +87,6 @@ void AmonglaSequence::init(const al::SequenceInitInfo& initInfo) {
     al::initSceneCreator(this, initInfo, holder, getAudioDirector(), mScreenCaptureExecutor,
                          new AmonglaSceneFactory());
     Logger::log("initializedSceneCreator!!!!\n");
-    sead::W
 }
 
 void AmonglaSequence::drawMain() const {

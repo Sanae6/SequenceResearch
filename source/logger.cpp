@@ -8,6 +8,7 @@ Logger* Logger::sInstance = nullptr;
 void Logger::createInstance() {
     #ifdef SERVERIP
     sInstance = new Logger(TOSTRING(SERVERIP), 3080, "MainLogger");
+    sInstance->disableName();
     #else
     sInstance = new Logger(0, 3080, "MainLogger");
     #endif

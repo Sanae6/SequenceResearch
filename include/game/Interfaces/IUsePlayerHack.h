@@ -5,6 +5,8 @@
 * Vtable loc: 
 */
 
-class IUsePlayerHack {
+class PlayerHackKeeper;
 
+class IUsePlayerHack {
+    virtual PlayerHackKeeper* getPlayerHackKeeper() const = 0;
 };

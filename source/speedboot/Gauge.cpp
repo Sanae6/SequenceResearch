@@ -27,6 +27,11 @@ void Gauge::exeAppear() {
 }
 
 void Gauge::exeWait() {
+    if (al::isNearZero(worldResourceLoader->calcLoadPercent(), 0.001f)) {
+        if (al::isFirstStep(this) || al::isActionEnd(this, "Gauge"))
+            al::startAction(this, "Decrease", "Gauge");
+        return;
+    }
     float actual = worldResourceLoader->calcLoadPercent() / 100.0f;
     if (actual < 1.0) {
         al::startFreezeAction(this, "Decrease", al::getActionFrameMax(this, "Decrease", "Gauge") * (1.0f - actual), "Gauge");

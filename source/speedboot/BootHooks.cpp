@@ -41,7 +41,7 @@ struct HakoniwaSequenceDeezNuts : public al::NerveStateBase {
         Logger::log("Amongla death\n");
         Logger::log("Sequence: %s, Resource loader: %p\n", mSequence->getName().cstr(),
                     mSequence->mResourceLoader);
-        initNerve(&nrvHakoniwaSequenceDeezNutsLoadStage, 0);
+        initNerve(&nrvHakoniwaSequenceDeezNutsInitThread, 0);
     }
 
     void exeInitThread() {
@@ -60,7 +60,7 @@ struct HakoniwaSequenceDeezNuts : public al::NerveStateBase {
 
     void exeLoadStage() {
         if (al::isFirstStep(this)) {
-            mSequence->mInitThread->start();
+            // mSequence->mInitThread->start();
             const char* name = GameDataFunction::getNextStageName(this->mSequence->mGameDataHolder);
             if (name == nullptr) name = GameDataFunction::getMainStageName(this->mSequence->mGameDataHolder, 0);
             int scenario = GameDataFunction::calcNextScenarioNo(this->mSequence->mGameDataHolder);

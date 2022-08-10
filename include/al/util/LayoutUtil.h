@@ -31,7 +31,7 @@ void showPane(IUseLayout* lyt, const char* paneName);
 void showPaneNoRecursive(IUseLayout* lyt, const char* paneName);
 
 bool isHidePane(const IUseLayout* lyt, const char* paneName);
-bool isActionPlaying(IUseLayoutAction*, const char* action, const char* group);
+bool isActionPlaying(const IUseLayoutAction*, const char* action, const char* group);
 bool isActionEnd(IUseLayoutAction const*, char const*);
 bool isExistPane(IUseLayout* lyt, const char* paneName);
 

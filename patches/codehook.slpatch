@@ -24,11 +24,11 @@ B59E28: // sead::system::print
 //4C8958:
 //    BL initDebugListHook
 //
-//1B3F0C: // disables call to open HTML viewer during first time odyssey flight
-//    NOP
+1B3F0C: // disables call to open HTML viewer during first time odyssey flight
+    NOP
 //
-//1F2A2C: // patches checkpoint system to always allow warping
-//    MOV W0, #1
+1F2A2C: // patches checkpoint system to always allow warping
+    MOV W0, #1
 //
 //4B5E30: // patches actor factory ctor with custom matching factory
 //    B ProjectActorFactory
@@ -68,3 +68,14 @@ B59E28: // sead::system::print
     ORR w2, wzr, #0x1f // nerve state count
 50eb64:
     BL speedboot::prepareLayoutInitInfo
+
+// Butterfly Player
+
+4b5d90:
+    B ButterflyPlayerFactory
+
+56b040:
+    RET
+0d5978:
+    MOV x0, #1
+    RET

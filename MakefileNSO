@@ -33,7 +33,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #---------------------------------------------------------------------------------
 TARGET		?=	$(notdir $(CURDIR))$(SMOVER)
 BUILD		?=	build$(SMOVER)
-SOURCES		:=  source/actors source/cameras source/sequences source/speedboot source/layouts source
+SOURCES		:=  source/actors source/cameras source/sequences source/players source/speedboot source/layouts source
 DATA		:=	data
 INCLUDES	:=	include include/sead $(SOURCES)
 
