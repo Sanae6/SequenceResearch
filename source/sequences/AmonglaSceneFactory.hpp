@@ -5,5 +5,5 @@ typedef al::Scene* (*sceneCreator)();
 
 class AmonglaSceneFactory : public alSceneFunction::SceneFactory {
 public:
-    AmonglaSceneFactory();
+    AmonglaSceneFactory(const char* name);
 };

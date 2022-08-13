@@ -53,29 +53,29 @@ B59E28: // sead::system::print
 
 // AmonglaSequence
 
-//536544:
-//    BL amonglaPatch
-//536730:
-//    BL isEqualStringFalse
-//536580:
-//    BL isEqualStringFalse
+536544:
+    BL amonglaPatch
+536730:
+    BL isEqualStringFalse
+536580:
+    BL isEqualStringFalse
 
 // Skip to StageScene
 
-50ef28:
-    BL speedboot::hakoniwaSetNerveSetup
-50eb88:
-    ORR w2, wzr, #0x1f // nerve state count
-50eb64:
-    BL speedboot::prepareLayoutInitInfo
+//50ef28:
+//    BL speedboot::hakoniwaSetNerveSetup
+//50eb88:
+//    ORR w2, wzr, #0x1f // nerve state count
+//50eb64:
+//    BL speedboot::prepareLayoutInitInfo
 
 // Butterfly Player
 
-4b5d90:
-    B ButterflyPlayerFactory
+//4b5d90:
+//    B ButterflyPlayerFactory
 
-56b040:
-    RET
-0d5978:
-    MOV x0, #1
-    RET
+//56b040:
+//    RET
+//0d5978:
+//    MOV x0, #1
+//    RET

@@ -6,9 +6,9 @@
 namespace al {
 class GameDrawInfo {
 public:
-    agl::RenderBuffer* mFirstRenderBuffer;
-    agl::RenderBuffer* mSecondRenderBuffer;
-    bool mUseFirstBuffer;
+    agl::RenderBuffer* mDockedRenderBuffer;
+    agl::RenderBuffer* mHandheldRenderBuffer;
+    bool mIsDocked;
     agl::DrawContext* mDrawContext;
 };
 }  // namespace al

@@ -44,25 +44,27 @@ void AmonglaSequence::init(const al::SequenceInitInfo& initInfo) {
     Logger::log("initDrawSystemInfo\n");
 
     mScreenCaptureExecutor = new al::ScreenCaptureExecutor(1);
-    const auto physicalArea = getDrawInfo()->mFirstRenderBuffer->getPhysicalArea();
+    const auto physicalArea = getDrawInfo()->mHandheldRenderBuffer->getPhysicalArea();
+    Logger::log("Physical my balls %.2fx%.2f into your %dx%d\n", physicalArea.getSizeX(), physicalArea.getSizeY(), (int)physicalArea.getSizeX(), (int)physicalArea.getSizeY());
     mScreenCaptureExecutor->createScreenCapture((int)(physicalArea.getSizeX()),
                                                 (int)(physicalArea.getSizeY()), 0);
+    sead::Heap* heap = al::getSequenceHeap();
     Logger::log("screenCapture created\n");
 
-    al::AudioDirectorInitInfo audioInitInfo = {};
+    al::AudioDirectorInitInfo audioInitInfo ;
     al::AudioSystemInfo* audioSystemInfo =
         alAudioSystemFunction::getAudioSystemInfo(initInfo.mSystemInfo);
     audioInitInfo.mSeDirectorInitInfo.unknown_0x0 = -1;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x4 = -1;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x30 = -1;
-    audioInitInfo.mSeDirectorInitInfo.unknown_0x60 = -1.0;
+    audioInitInfo.mSeDirectorInitInfo.unknown_0x60 = -1.0f;
     audioInitInfo.unknown_0x20 = 0;
     audioInitInfo.unknown_0x18 = 0;
     audioInitInfo.mAudioSystemInfo = nullptr;
-    audioInitInfo.unknown_0x8 = 0;
+    audioInitInfo.mSequence = 0;
     audioInitInfo.mCurrentStage = nullptr;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x8 = 1;
-    audioInitInfo.mSeDirectorInitInfo.mUseMusicEffects = true;
+    audioInitInfo.mSeDirectorInitInfo.mUseMusicEffects = false;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x21 = false;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x28 = nullptr;
     audioInitInfo.mSeDirectorInitInfo.unknown_0x38 = 0;
@@ -85,7 +87,7 @@ void AmonglaSequence::init(const al::SequenceInitInfo& initInfo) {
 
     AmonglaGameDataHolder* holder = new AmonglaGameDataHolder(initInfo.mSystemInfo->mMessageSys);
     al::initSceneCreator(this, initInfo, holder, getAudioDirector(), mScreenCaptureExecutor,
-                         new AmonglaSceneFactory());
+                         new AmonglaSceneFactory("アモンガッスのシーン生成"));
     Logger::log("initializedSceneCreator!!!!\n");
 }
 

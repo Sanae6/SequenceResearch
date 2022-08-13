@@ -8,6 +8,6 @@ typedef al::Scene* (*sceneCreator)();
 
 class SceneFactory : public al::Factory<sceneCreator> {
 public:
-    SceneFactory();
+    SceneFactory(const char* name);
 };
 }  // namespace alSceneFunction

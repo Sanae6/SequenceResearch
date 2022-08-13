@@ -6,10 +6,11 @@
 
 namespace al {
 class AudioSystemInfo;
+class Sequence;
 class AudioDirectorInitInfo {
 public:
     AudioSystemInfo* mAudioSystemInfo;
-    s64 unknown_0x8;
+    Sequence* mSequence;
     char* mCurrentStage;
     s32 unknown_0x18;
     s64 unknown_0x20;
