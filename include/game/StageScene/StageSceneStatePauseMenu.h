@@ -20,7 +20,7 @@ class SceneAudioSystemPauseController;
 
 namespace al
 {
-    class SimpleLayoutAppearWaitEnd : public al::LayoutActor {};
+    class SimpleLayoutAppearWaitEnd;
     class WindowConfirm;
     class KeyRepeatCtrl;
     class WipeSimple;

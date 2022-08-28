@@ -4,7 +4,8 @@
 
 namespace al {
 class WipeSimple : al::LayoutActor {
-    WipeSimple(const char*, char*, const al::LayoutInitInfo*, al::LayoutActor*, const char*);
+public:
+    WipeSimple(const char*, const char*, const al::LayoutInitInfo&, const char*);
     void appear() override;
 
     void startClose();

@@ -19,5 +19,7 @@ public:
     void drawList(const char*, const char*);
     void setLayoutSystem(al::LayoutSystem*);
     void setDrawContext(agl::DrawContext*);
+private:
+    void* balls[6];
 };
 }  // namespace al

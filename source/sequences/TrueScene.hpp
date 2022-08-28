@@ -4,7 +4,8 @@
 
 class TrueScene : public al::Scene {
 public:
-    TrueScene(const char* name);
-    void init(const al::SceneInitInfo & initInfo) override;
+    TrueScene();
+    void init(const al::SceneInitInfo& initInfo) override;
     
+    void exeWait();
 };

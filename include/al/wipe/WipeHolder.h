@@ -21,5 +21,15 @@ public:
     bool isCloseEnd() const;
     bool isOpenEnd() const;
     bool isCloseWipe(const char*) const;
+
+private:
+    int wipeCount;
+    int addedWipes;
+    int currentWipeIndex;
+    void* wipePair;
+    bool closed;
+    void* wipeInfo;
+    void* activeWipe;
+    int wipeInfoCount;
 };
-}
+}  // namespace al

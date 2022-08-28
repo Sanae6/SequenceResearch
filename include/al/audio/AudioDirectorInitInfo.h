@@ -12,7 +12,7 @@ public:
     AudioSystemInfo* mAudioSystemInfo;
     Sequence* mSequence;
     char* mCurrentStage;
-    s32 unknown_0x18;
+    s32 mScenarioNo;
     s64 unknown_0x20;
     SeDirectorInitInfo mSeDirectorInitInfo;
     BgmDirectorInitInfo mBgmDirectorInitInfo;

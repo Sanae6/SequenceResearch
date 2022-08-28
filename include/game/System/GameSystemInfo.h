@@ -18,6 +18,7 @@ namespace al
     struct GamePadSystem;
     struct AudioSystem;
     struct WaveVibrationHolder; // :: aal::IAudioFrameProcess;
+    class FontHolder;
 } // namespace al
 
 struct ProjectNfpDirector;
@@ -27,15 +28,15 @@ struct Application;
 namespace al {
     class GameSystemInfo {
         public:
-            void *gap1;
+            AudioSystem* mAudioSys;
             al::EffectSystem *mEffectSys;                  // 0x08 
             al::LayoutSystem *mLayoutSys;                  // 0x10 
             al::MessageSystem *mMessageSys;                // 0x18 
             al::NetworkSystem *mNetworkSys;                // 0x20 
-            al::AudioSystem *mAudioSys;                    // 0x28 
+            void *balls;                    // 0x28 
             al::GamePadSystem *mGamePadSys;                // 0x30 
             al::GameDrawInfo *mDrawInfo;                   // 0x38 from Application::sInstance + 0x30
-            
+            al::FontHolder* mFontHolder;
             ProjectNfpDirector *mProjNfpDirector;          // 0x48 
             al::HtmlViewer *mHtmlViewer;                   // 0x50 
             ApplicationMessageReceiver *mMessageReciever;  // 0x58 

@@ -7,9 +7,9 @@ class ButterflyPlayerFactory : public al::Factory<playerCreator> {
 public:
     ButterflyPlayerFactory();
     const char * convertName(const char *name) const override {
-        // if (al::isEqualString(name, "PlayerActorHakoniwa") && al::isPadHoldZR(-1)) {
+        if (al::isEqualString(name, "PlayerActorHakoniwa") && al::isPadHoldZR(-1)) {
             return "ClashingBird";
-        // }
-        // return name;
+        }
+        return name;
     }
 };

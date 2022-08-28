@@ -44,7 +44,7 @@ void drawBackground(agl::DrawContext* context) {
     c.r = al::isPadHoldA(-1) ? 0.1 : 1.0;
     c.g = al::isPadHoldA(-1) ? 0.6 : 0.1;
     c.b = 0.1;
-    c.a = 1.0;
+    c.a = 0.1;
 
     agl::utl::DevTools::beginDrawImm(context, sead::Matrix34<float>::ident,
                                      sead::Matrix44<float>::ident);

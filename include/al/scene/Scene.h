@@ -20,6 +20,13 @@ class ScreenCoverCtrl;
 class AudioDirector;
 class AudioKeeper;
 class NerveKeeper;
+class GraphicsInitArg;
+
+#define GETTER(type, name, field, suffix) type name() suffix {  \
+    return field;                                               \
+}
+
+#define GETTER_NOIMPL(type, name, suffix) type name() suffix;
 
 class Scene : public al::NerveExecutor,
               public al::IUseAudioKeeper,
@@ -36,17 +43,29 @@ public:
     virtual void control();
     virtual void drawMain();
     virtual void drawSub();
-    al::AudioKeeper* getAudioKeeper() const override {
-        return mAudioKeeper;
-    }
-    al::SceneObjHolder* getSceneObjHolder() const override {
-        return mSceneObjHolder;
-    }
-    al::CameraDirector* getCameraDirector() const override {
-        return mLiveActorKit->getCameraDirector();
-    }
+    
+    GETTER_NOIMPL(AudioKeeper*, getAudioKeeper, const override);
+    GETTER_NOIMPL(SceneObjHolder*, getSceneObjHolder, const override);
+    GETTER_NOIMPL(CameraDirector*, getCameraDirector, const override);
+    GETTER(LayoutKit*, getLayoutKit, mLayoutKit, const);
+    GETTER(SceneStopCtrl*, getSceneStopCtrl, mSceneStopCtrl, const);
+    GETTER(SceneMsgCtrl*, getSceneMsgCtrl, mSceneMsgCtrl, const);
+
+    void initializeAsync(const al::SceneInitInfo&);
+    void initDrawSystemInfo(const al::SceneInitInfo&);
+    void initSceneObjHolder(al::SceneObjHolder*);
+    void initAndLoadStageResource(const char*, int);
+    void initLiveActorKit(const al::SceneInitInfo&, int, int, int);
+    void initLiveActorKitWithGraphics(const al::GraphicsInitArg&, const al::SceneInitInfo&, int, int, int);
+    void initLayoutKit(const al::SceneInitInfo&);
+    void initSceneStopCtrl();
+    void initSceneMsgCtrl();
+    void initScreenCoverCtrl();
+    void endInit(const al::ActorInitInfo&);
 
 private:
+    void initLiveActorKitImpl(const al::SceneInitInfo&, int, int, int);
+
     bool mIsAlive;
     sead::FixedSafeString<0x40> mName;
     StageResourceKeeper* mStageResourceKeeper;
@@ -61,5 +80,5 @@ private:
     NerveKeeper* mNerveKeeper;
 };
 
-static_assert(sizeof(al::Scene) == 0xd8);
+static_assert(sizeof(al::Scene) == 0xd8, "Scene size is not 0xd8");
 }  // namespace al

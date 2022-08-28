@@ -6,6 +6,9 @@
 namespace al {
 class GameDrawInfo {
 public:
+    agl::RenderBuffer* getRenderBuffer() {
+        return mIsDocked ? mDockedRenderBuffer : mHandheldRenderBuffer;
+    }
     agl::RenderBuffer* mDockedRenderBuffer;
     agl::RenderBuffer* mHandheldRenderBuffer;
     bool mIsDocked;
